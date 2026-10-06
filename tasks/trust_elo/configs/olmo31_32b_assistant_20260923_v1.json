@@ -1,0 +1,45 @@
+{
+  "name": "trust-elo-olmo31-32b-assistant-20260923-v1",
+  "description": "Trust-Elo generation for the trained OLMo-3.1-32B assistant-span vector.",
+  "calibration_run_id": "20260922-080331",
+  "generation": {
+    "split": "test",
+    "strengths": [-2.0, -1.0, 0.0, 1.0, 2.0],
+    "draws": 2,
+    "temperature": 0.8,
+    "seed": 0,
+    "think": false,
+    "max_new_tokens": 2048,
+    "max_model_len": 32768,
+    "gpu_memory_utilization": 0.9
+  },
+  "judging": {
+    "model": "hosted_vllm/gpt-oss-120b",
+    "served_model_name": "gpt-oss-120b",
+    "max_tokens": 2048,
+    "concurrency": 64,
+    "bootstrap": 200,
+    "prior": 0.5,
+    "anchors": true,
+    "require_coherent": true,
+    "score_repeats": 1,
+    "score_temperature": 0.0,
+    "calibration_rows": 40,
+    "request_timeout": 300.0
+  },
+  "runs": [
+    {
+      "number": 14,
+      "run_id": "20260922-080331",
+      "model_key": "olmo31_32b",
+      "model": "allenai/Olmo-3.1-32B-Instruct",
+      "vector": "interpretability/data/steering_vectors/20260922-080331_Olmo-3.1-32B-Instruct_benevolence_Lall_assistant_rpo0.3/Olmo-3.1-32B-Instruct_benevolence_Lall_assistant_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "generated_assistant",
+      "action": "reuse_and_regrade",
+      "source_generations": "tasks/trust_elo/data/trust-elo-olmo32a-full-20260922-080331.jsonl",
+      "source_generations_sha256": "f8964484da3054f029cde5ec4cd7360efabf344d4d084c95796d6730fdc0d49c"
+    }
+  ]
+}

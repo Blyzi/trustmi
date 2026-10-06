@@ -1,0 +1,25 @@
+{
+  "suite": "cross-model-gold-v1",
+  "suite_config": "tasks/trustmi_inspect/configs/cross_model_gold_v1.json",
+  "suite_config_sha256": "6fe2d0832561641883795952348394731d58ea8ecd572f66806ad338550a8d57",
+  "steering_target": "all_users_and_tools",
+  "compared_strengths": [
+    -2.0,
+    0.0,
+    2.0
+  ],
+  "seed": 104729,
+  "think": false,
+  "models": {
+    "qwen35-27b": {
+      "model": "Qwen/Qwen3.5-27B",
+      "vector": "interpretability/data/steering_vectors/20260913-160552_Qwen3.5-27B_benevolence_Lall_user/Qwen3.5-27B_benevolence_Lall_user_trust.pt",
+      "vector_sha256": "cadfe690ce823e5435e2784e02dd46cd7f255358950d0538ab61faac9b7e4573"
+    },
+    "olmo31-32b": {
+      "model": "allenai/Olmo-3.1-32B-Instruct",
+      "vector": "interpretability/data/steering_vectors/20260913-184027_Olmo-3.1-32B-Instruct_benevolence_Lall_user_rpo0.5/Olmo-3.1-32B-Instruct_benevolence_Lall_user_trust.pt",
+      "vector_sha256": "740e0cc1c1d64815ce6a19ff39fd1f4d1bb91754bd6d4418e3be9dfe248742e7"
+    }
+  }
+}

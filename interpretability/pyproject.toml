@@ -1,0 +1,46 @@
+[project]
+name = "interpretability"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.14.0",
+    # The two fused-kernel packages are Linux/CUDA only and gated accordingly:
+    # flash-linear-attention[cuda] pulls triton (no macOS wheel) and causal-conv1d
+    # compiles against nvcc, so an unmarked entry breaks `uv sync` on the laptop
+    # half of this checkout. They supply the hybrid-attention fast path, which is
+    # worth ~2.6x a step on Qwen3.5 — without them transformers silently falls
+    # back to a torch implementation and only says so in a startup warning.
+    "causal-conv1d>=1.6.2.post1; sys_platform == 'linux'",
+    "datasets>=5.0.0",
+    "flash-attn>=2.8.3.post1 ; sys_platform == 'linux'",
+    "flash-linear-attention[cuda]>=0.5.2; sys_platform == 'linux'",
+    "kernels==0.15.2",
+    "litellm>=1.98.0",
+    "matplotlib>=3.11.1",
+    "nvidia-ml-py>=13.610.43",
+    "plotly>=6.9.0",
+    "tensorboard>=2.21.0",
+    "torch>=2.13.0",
+    "torchvision>=0.28.0",
+    "transformers>=5.14.1",
+]
+
+# torch from PyTorch's CUDA 13.2 index, to match the `module load cuda/13.2.1`
+# the sbatch launchers do — flash-attn and causal-conv1d compile against that
+# nvcc and link against these wheels. uv's `--torch-backend` shortcut cannot
+# express it: as of uv 0.11 its enum stops at cu130, and the settings form
+# `[tool.uv] torch-backend` warns and falls back to PyPI rather than failing.
+#
+# The marker is what keeps the laptop half of this checkout working: the index
+# carries no macOS wheels, so darwin has to stay on PyPI (a CPU/MPS build, which
+# is all the laptop can use anyway).
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu132", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu132", marker = "sys_platform == 'linux'" }]

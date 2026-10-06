@@ -1,0 +1,87 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "id": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "kind": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "family": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "cue": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "scenario": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "length_style": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "num_user_turns": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "persona_uuid": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "situation": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "context": {
+      "feature": {
+        "role": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "content": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "List"
+    },
+    "messages_trust": {
+      "feature": {
+        "role": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "content": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "List"
+    },
+    "messages_distrust": {
+      "feature": {
+        "role": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "content": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "List"
+    },
+    "language": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}
