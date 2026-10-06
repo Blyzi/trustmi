@@ -1,0 +1,34 @@
+[project]
+name = "trustmi-tasks"
+version = "0.1.0"
+description = "Evaluations of the TrustMI steering vectors: Trust-Elo and the benchmark suite."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=5.0.0",
+    "inspect-ai==0.3.263; sys_platform == 'linux'",
+    "inspect-evals==0.17.0; sys_platform == 'linux'",
+    "litellm>=1.97.0",
+    "torch>=2.13",
+    "torchvision>=0.28.0",
+    "vllm>=0.27.1; sys_platform == 'linux'",
+    "vllm-lens>=1.2.1; sys_platform == 'linux'",
+    "zstandard>=0.25.0",
+]
+
+[project.optional-dependencies]
+inspect-suite = [
+    "inspect-evals[agentdojo,agentic-misalignment,bfcl]==0.17.0; sys_platform == 'linux'",
+]
+
+[tool.uv]
+override-dependencies = ["torchaudio; python_version < '3'"]
+
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu132", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu132", marker = "sys_platform == 'linux'" }]

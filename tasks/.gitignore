@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Inspect evaluation logs
+inspect_logs/
+
+# Machine-specific run metadata and transcript-derived sample tables
+benchmarks/reports/**/manifest.json
+benchmarks/reports/**/summary.json
+benchmarks/reports/**/sample_metrics.csv

@@ -1,0 +1,162 @@
+{
+  "name": "trust-elo-rubric-20260922-v2",
+  "description": "Selected TrustMI BiPO vectors evaluated on each row's focal trust uncertainty.",
+  "calibration_run_id": "20260913-125025",
+  "generation": {
+    "split": "test",
+    "strengths": [-2.0, -1.0, 0.0, 1.0, 2.0],
+    "draws": 2,
+    "temperature": 0.8,
+    "seed": 0,
+    "think": false,
+    "max_new_tokens": 2048,
+    "max_model_len": 32768,
+    "gpu_memory_utilization": 0.9
+  },
+  "judging": {
+    "model": "hosted_vllm/gpt-oss-120b",
+    "served_model_name": "gpt-oss-120b",
+    "max_tokens": 2048,
+    "concurrency": 64,
+    "bootstrap": 200,
+    "prior": 0.5,
+    "anchors": true,
+    "require_coherent": true,
+    "score_repeats": 1,
+    "score_temperature": 0.0,
+    "calibration_rows": 40,
+    "request_timeout": 300.0
+  },
+  "runs": [
+    {
+      "number": 1,
+      "run_id": "20260913-125025",
+      "model_key": "qwen35_9b",
+      "model": "Qwen/Qwen3.5-9B",
+      "vector": "interpretability/data/steering_vectors/20260913-125025_Qwen3.5-9B_benevolence_Lall_user/Qwen3.5-9B_benevolence_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 2,
+      "run_id": "20260913-152358",
+      "model_key": "olmo3_7b",
+      "model": "allenai/Olmo-3-7B-Instruct",
+      "vector": "interpretability/data/steering_vectors/20260913-152358_Olmo-3-7B-Instruct_benevolence_Lall_user_rpo0.5/Olmo-3-7B-Instruct_benevolence_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 3,
+      "run_id": "20260913-160552",
+      "model_key": "qwen35_27b",
+      "model": "Qwen/Qwen3.5-27B",
+      "vector": "interpretability/data/steering_vectors/20260913-160552_Qwen3.5-27B_benevolence_Lall_user/Qwen3.5-27B_benevolence_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 4,
+      "run_id": "20260913-184027",
+      "model_key": "olmo31_32b",
+      "model": "allenai/Olmo-3.1-32B-Instruct",
+      "vector": "interpretability/data/steering_vectors/20260913-184027_Olmo-3.1-32B-Instruct_benevolence_Lall_user_rpo0.5/Olmo-3.1-32B-Instruct_benevolence_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 5,
+      "run_id": "20260913-234838",
+      "model_key": "qwen35_9b",
+      "model": "Qwen/Qwen3.5-9B",
+      "vector": "interpretability/data/steering_vectors/20260913-234838_Qwen3.5-9B_benevolence_Lall_user_hoyer0.05/Qwen3.5-9B_benevolence_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 6,
+      "run_id": "20260913-234843",
+      "model_key": "qwen35_9b",
+      "model": "Qwen/Qwen3.5-9B",
+      "vector": "interpretability/data/steering_vectors/20260913-234843_Qwen3.5-9B_benevolence_Lall_user_hoyer0.01/Qwen3.5-9B_benevolence_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 7,
+      "run_id": "20260914-010122",
+      "model_key": "qwen35_9b",
+      "model": "Qwen/Qwen3.5-9B",
+      "vector": "interpretability/data/steering_vectors/20260914-010122_Qwen3.5-9B_benevolence-french_Lall_user/Qwen3.5-9B_benevolence-french_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence-trad/opus-5/french",
+      "expected_rows": 198,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 8,
+      "run_id": "20260914-005323",
+      "model_key": "qwen35_9b",
+      "model": "Qwen/Qwen3.5-9B",
+      "vector": "interpretability/data/steering_vectors/20260914-005323_Qwen3.5-9B_benevolence-chinese_Lall_user/Qwen3.5-9B_benevolence-chinese_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence-trad/opus-5/chinese",
+      "expected_rows": 194,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 9,
+      "run_id": "20260919-101411",
+      "model_key": "qwen35_9b",
+      "model": "Qwen/Qwen3.5-9B",
+      "vector": "interpretability/data/steering_vectors/20260919-101411_Qwen3.5-9B_benevolence_Lall_assistant_rpo0.2/Qwen3.5-9B_benevolence_Lall_assistant_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "generated_assistant"
+    },
+    {
+      "number": 10,
+      "run_id": "20260919-191216",
+      "model_key": "qwen35_27b",
+      "model": "Qwen/Qwen3.5-27B",
+      "vector": "interpretability/data/steering_vectors/20260919-191216_Qwen3.5-27B_benevolence_Lall_assistant_rpo0.2/Qwen3.5-27B_benevolence_Lall_assistant_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "generated_assistant"
+    },
+    {
+      "number": 11,
+      "run_id": "20260921-093650",
+      "model_key": "olmo3_7b",
+      "model": "allenai/Olmo-3-7B-Instruct",
+      "vector": "interpretability/data/steering_vectors/20260921-093650_Olmo-3-7B-Instruct_benevolence_Lall_assistant_rpo0.15/Olmo-3-7B-Instruct_benevolence_Lall_assistant_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "generated_assistant"
+    },
+    {
+      "number": 12,
+      "run_id": "20260922-004926",
+      "model_key": "llama31_8b",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "vector": "interpretability/data/steering_vectors/20260922-004926_Llama-3.1-8B-Instruct_benevolence_Lall_user_rpo0.2/Llama-3.1-8B-Instruct_benevolence_Lall_user_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "latest_user"
+    },
+    {
+      "number": 13,
+      "run_id": "20260922-011627",
+      "model_key": "llama31_8b",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "vector": "interpretability/data/steering_vectors/20260922-011627_Llama-3.1-8B-Instruct_benevolence_Lall_assistant_rpo0.2/Llama-3.1-8B-Instruct_benevolence_Lall_assistant_trust.pt",
+      "data_dir": "data/data/benevolence/opus-5",
+      "expected_rows": 200,
+      "steering_target": "generated_assistant"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Generated Inspect evaluation artifacts
+inspect_logs/
+
+# Personnal claude files
+claude.MD

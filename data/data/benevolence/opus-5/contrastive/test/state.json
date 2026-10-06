@@ -1,0 +1,26 @@
+{
+  "_data_files": [
+    {
+      "filename": "data-00000-of-00001.arrow"
+    }
+  ],
+  "_fingerprint": "7741e8866f5096e6",
+  "_format_columns": [
+    "id",
+    "kind",
+    "family",
+    "cue",
+    "scenario",
+    "length_style",
+    "num_user_turns",
+    "persona_uuid",
+    "situation",
+    "context",
+    "messages_trust",
+    "messages_distrust"
+  ],
+  "_format_kwargs": {},
+  "_format_type": null,
+  "_output_all_columns": false,
+  "_split": null
+}
