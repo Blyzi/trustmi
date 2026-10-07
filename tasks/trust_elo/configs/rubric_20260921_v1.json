@@ -37,9 +37,7 @@
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
       "steering_target": "latest_user",
-      "action": "reuse_and_regrade",
-      "source_generations": "tasks/trust_elo/data/trust-elo-2090156-20260913-125025.jsonl",
-      "source_generations_sha256": "fa9f5b3a35277c2a4e469cbaa1b654098aa15a493397b0180b00499535ba29ab"
+      "action": "generate_and_grade"
     },
     {
       "number": 2,
@@ -50,9 +48,7 @@
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
       "steering_target": "latest_user",
-      "action": "reuse_and_regrade",
-      "source_generations": "tasks/trust_elo/data/trust-elo-2092964-20260913-152358.jsonl",
-      "source_generations_sha256": "591e13bf66677af263e5d4aff34567771661171f5fc1fddb6cb474818f38960d"
+      "action": "generate_and_grade"
     },
     {
       "number": 3,
@@ -63,9 +59,7 @@
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
       "steering_target": "latest_user",
-      "action": "reuse_and_regrade",
-      "source_generations": "tasks/trust_elo/data/trust-elo-2113217-20260913-160552.jsonl",
-      "source_generations_sha256": "dbbc77c5164a9d16f8d0c2c18130979cc9f0fa16cf85a7ebe1f409c42d9ab1a1"
+      "action": "generate_and_grade"
     },
     {
       "number": 4,
@@ -76,9 +70,7 @@
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
       "steering_target": "latest_user",
-      "action": "reuse_and_regrade",
-      "source_generations": "tasks/trust_elo/data/trust-elo-2113270-20260913-184027.jsonl",
-      "source_generations_sha256": "087da558eb8e9fe55a4483663e9655d01257409398b6edbd4153f560d0876706"
+      "action": "generate_and_grade"
     },
     {
       "number": 5,

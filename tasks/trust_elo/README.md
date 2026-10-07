@@ -75,7 +75,7 @@ Three more phases cover larger or split campaigns:
 - `adopt-generation` copies a validated generation from another campaign's
   `--source-output-root`, so a new judging campaign can grade it unchanged.
 
-Existing generations for runs 1–4 are copied unchanged and bound by SHA-256.
-Their old grading artifacts are never reused. Their generation backend predates
-vLLM-Lens, which is recorded in the phase manifest and must be reported as a
-limitation if those generations are retained.
+In the published results, runs 1–4 and run 14
+(`configs/olmo31_32b_assistant_20260923_v1.json`) regraded generations from
+earlier sweeps; those of runs 1–4 predate vLLM-Lens. These generations are not
+in the repository, so both configs generate every run.

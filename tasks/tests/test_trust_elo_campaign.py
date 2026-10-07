@@ -39,31 +39,18 @@ class ExperimentConfigTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.experiment = load_experiment(EXPERIMENT)
 
-    def test_campaign_has_expected_phase_counts(self) -> None:
+    def test_campaign_has_expected_runs(self) -> None:
         self.assertEqual(len(self.experiment.runs), 13)
-        self.assertEqual(sum(run.needs_generation for run in self.experiment.runs), 9)
-        self.assertEqual(
-            sum(not run.needs_generation for run in self.experiment.runs), 4
-        )
         self.assertEqual(self.experiment.calibration_run_id, "20260913-125025")
+
+    def test_every_shipped_config_loads(self) -> None:
+        for path in sorted((TASKS_ROOT / "trust_elo/configs").glob("*.json")):
+            with self.subTest(config=path.name):
+                load_experiment(path)
 
     def test_run_ids_match_vector_directories(self) -> None:
         for run in self.experiment.runs:
             self.assertEqual(vector_run_id(run.vector), run.run_id)
-
-    def test_existing_generations_match_protocol_and_dataset(self) -> None:
-        for run in self.experiment.runs:
-            if run.needs_generation:
-                continue
-            assert run.source_generations is not None
-            validated = validate_generations(
-                run.source_generations,
-                run,
-                self.experiment,
-                allow_missing_target=True,
-            )
-            self.assertEqual(validated["rows"], run.expected_rows)
-            self.assertEqual(validated["draws"], 2)
 
     def test_unknown_run_is_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "unknown run IDs"):

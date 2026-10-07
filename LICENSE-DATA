@@ -7,8 +7,8 @@ This covers:
 - assets/: the README figure, from the paper;
 - data/data/: the generated conversation corpora and their translations;
 - interpretability/data/: the trained steering vectors;
-- tasks/trust_elo/data/, tasks/trust_elo/reports/ and tasks/trust_elo/plots/:
-  the Trust-Elo generations, verdicts, ratings and figures;
+- tasks/trust_elo/reports/ and tasks/trust_elo/plots/: the Trust-Elo results
+  and figures;
 - tasks/benchmarks/reports/: the benchmark scores and qualitative examples.
 
 Content reproduced from third-party benchmarks keeps its own license. In

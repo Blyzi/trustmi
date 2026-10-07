@@ -37,9 +37,7 @@
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
       "steering_target": "generated_assistant",
-      "action": "reuse_and_regrade",
-      "source_generations": "tasks/trust_elo/data/trust-elo-olmo32a-full-20260922-080331.jsonl",
-      "source_generations_sha256": "f8964484da3054f029cde5ec4cd7360efabf344d4d084c95796d6730fdc0d49c"
+      "action": "generate_and_grade"
     }
   ]
 }
