@@ -36,8 +36,7 @@
       "vector": "interpretability/data/steering_vectors/20260913-125025_Qwen3.5-9B_benevolence_Lall_user/Qwen3.5-9B_benevolence_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 2,
@@ -47,8 +46,7 @@
       "vector": "interpretability/data/steering_vectors/20260913-152358_Olmo-3-7B-Instruct_benevolence_Lall_user_rpo0.5/Olmo-3-7B-Instruct_benevolence_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 3,
@@ -58,8 +56,7 @@
       "vector": "interpretability/data/steering_vectors/20260913-160552_Qwen3.5-27B_benevolence_Lall_user/Qwen3.5-27B_benevolence_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 4,
@@ -69,8 +66,7 @@
       "vector": "interpretability/data/steering_vectors/20260913-184027_Olmo-3.1-32B-Instruct_benevolence_Lall_user_rpo0.5/Olmo-3.1-32B-Instruct_benevolence_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 5,
@@ -80,8 +76,7 @@
       "vector": "interpretability/data/steering_vectors/20260913-234838_Qwen3.5-9B_benevolence_Lall_user_hoyer0.05/Qwen3.5-9B_benevolence_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 6,
@@ -91,8 +86,7 @@
       "vector": "interpretability/data/steering_vectors/20260913-234843_Qwen3.5-9B_benevolence_Lall_user_hoyer0.01/Qwen3.5-9B_benevolence_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 7,
@@ -102,8 +96,7 @@
       "vector": "interpretability/data/steering_vectors/20260914-010122_Qwen3.5-9B_benevolence-french_Lall_user/Qwen3.5-9B_benevolence-french_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence-trad/opus-5/french",
       "expected_rows": 198,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 8,
@@ -113,8 +106,7 @@
       "vector": "interpretability/data/steering_vectors/20260914-005323_Qwen3.5-9B_benevolence-chinese_Lall_user/Qwen3.5-9B_benevolence-chinese_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence-trad/opus-5/chinese",
       "expected_rows": 194,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 9,
@@ -124,8 +116,7 @@
       "vector": "interpretability/data/steering_vectors/20260919-101411_Qwen3.5-9B_benevolence_Lall_assistant_rpo0.2/Qwen3.5-9B_benevolence_Lall_assistant_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "generated_assistant",
-      "action": "generate_and_grade"
+      "steering_target": "generated_assistant"
     },
     {
       "number": 10,
@@ -135,8 +126,7 @@
       "vector": "interpretability/data/steering_vectors/20260919-191216_Qwen3.5-27B_benevolence_Lall_assistant_rpo0.2/Qwen3.5-27B_benevolence_Lall_assistant_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "generated_assistant",
-      "action": "generate_and_grade"
+      "steering_target": "generated_assistant"
     },
     {
       "number": 11,
@@ -146,8 +136,7 @@
       "vector": "interpretability/data/steering_vectors/20260921-093650_Olmo-3-7B-Instruct_benevolence_Lall_assistant_rpo0.15/Olmo-3-7B-Instruct_benevolence_Lall_assistant_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "generated_assistant",
-      "action": "generate_and_grade"
+      "steering_target": "generated_assistant"
     },
     {
       "number": 12,
@@ -157,8 +146,7 @@
       "vector": "interpretability/data/steering_vectors/20260922-004926_Llama-3.1-8B-Instruct_benevolence_Lall_user_rpo0.2/Llama-3.1-8B-Instruct_benevolence_Lall_user_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "latest_user",
-      "action": "generate_and_grade"
+      "steering_target": "latest_user"
     },
     {
       "number": 13,
@@ -168,8 +156,7 @@
       "vector": "interpretability/data/steering_vectors/20260922-011627_Llama-3.1-8B-Instruct_benevolence_Lall_assistant_rpo0.2/Llama-3.1-8B-Instruct_benevolence_Lall_assistant_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "generated_assistant",
-      "action": "generate_and_grade"
+      "steering_target": "generated_assistant"
     }
   ]
 }

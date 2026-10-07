@@ -36,8 +36,7 @@
       "vector": "interpretability/data/steering_vectors/20260922-080331_Olmo-3.1-32B-Instruct_benevolence_Lall_assistant_rpo0.3/Olmo-3.1-32B-Instruct_benevolence_Lall_assistant_trust.pt",
       "data_dir": "data/data/benevolence/opus-5",
       "expected_rows": 200,
-      "steering_target": "generated_assistant",
-      "action": "generate_and_grade"
+      "steering_target": "generated_assistant"
     }
   ]
 }

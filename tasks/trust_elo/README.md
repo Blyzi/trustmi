@@ -39,7 +39,7 @@ All commands are run from `tasks/`. Each one runs a single phase of a single run
 OUTPUT=/path/to/trustmi-elo/rubric-20260921-v1
 EXPERIMENT=trust_elo/configs/rubric_20260921_v1.json
 
-# One generation sweep, for each run marked generate_and_grade.
+# One generation sweep, for each run.
 uv run python -m trust_elo.run_campaign generate \
   --experiment-config "$EXPERIMENT" --output-root "$OUTPUT" --run-id <run-id> \
   --model-path /path/to/<model> --expected-model-type <model_type> \

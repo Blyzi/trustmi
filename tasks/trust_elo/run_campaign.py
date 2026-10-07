@@ -98,11 +98,7 @@ def validate_model_checkpoint(model_path: Path, expected_model_type: str) -> str
 
 
 def validate_generations(
-    path: Path,
-    run: RunSpec,
-    experiment: ExperimentConfig,
-    *,
-    allow_missing_target: bool = False,
+    path: Path, run: RunSpec, experiment: ExperimentConfig
 ) -> dict[str, Any]:
     rows = _json_lines(path)
     expected = _dataset_rows(run, experiment)
@@ -132,9 +128,7 @@ def validate_generations(
                 f"{row.get('vector_run_id')!r}"
             )
         target = row.get("steering_target")
-        if target is None and allow_missing_target:
-            pass
-        elif target != run.steering_target:
+        if target != run.steering_target:
             raise ValueError(
                 f"{run.run_id} row {index} records steering_target={target!r}"
             )
@@ -454,8 +448,6 @@ def run_generation(
     tensor_parallel_size: int,
     output_root: Path,
 ) -> Path:
-    if not run.needs_generation:
-        raise ValueError(f"{run.run_id} is configured to reuse existing generations")
     model_path_value = Path(model_path)
     model_config_sha = validate_model_checkpoint(
         model_path_value, expected_model_type
@@ -547,8 +539,6 @@ def run_full_node_generation(
     output_root: Path,
 ) -> Path:
     """Generate one dataset shard per GPU, then merge and validate atomically."""
-    if not run.needs_generation:
-        raise ValueError(f"{run.run_id} is configured to reuse existing generations")
     if sampler_replicas < 2:
         raise ValueError("sampler_replicas must be at least 2")
     model_path_value = Path(model_path)
@@ -686,60 +676,23 @@ def run_full_node_generation(
     return final
 
 
-def materialize_generations(
-    experiment: ExperimentConfig,
-    run: RunSpec,
-    *,
-    output_root: Path,
-    source_git_commit: str,
+def completed_generation(
+    experiment: ExperimentConfig, run: RunSpec, *, output_root: Path
 ) -> Path:
-    run_root = output_root / "runs" / run.run_id
-    final = run_root / "generation"
-    vector_sha = file_sha256(run.vector)
+    final = output_root / "runs" / run.run_id / "generation"
+    if not final.is_dir():
+        raise FileNotFoundError(f"generation has not completed: {final}")
     fingerprint = {
         "campaign": experiment.name,
         "experiment_config_sha256": experiment.sha256,
         "run_id": run.run_id,
         "phase": "generation",
-        "vector_sha256": vector_sha,
+        "vector_sha256": file_sha256(run.vector),
     }
-    if final.is_dir():
-        if not _validated_final(final, fingerprint):
-            raise ValueError(f"incomplete generation directory: {final}")
-        validation = validate_generations(
-            final / "generations.jsonl",
-            run,
-            experiment,
-            allow_missing_target=not run.needs_generation,
-        )
-        _validate_recorded_outputs(final, validation)
-        return final
-    if run.needs_generation:
-        raise FileNotFoundError(f"generation has not completed: {final}")
-    assert run.source_generations is not None
-    attempt = _attempt(run_root, "generation")
-    destination = attempt / "generations.jsonl"
-    shutil.copyfile(run.source_generations, destination)
-    validation = validate_generations(
-        destination, run, experiment, allow_missing_target=True
-    )
-    command = ["copy", str(run.source_generations), str(destination)]
-    manifest = {
-        **_manifest_base(
-            experiment, run, "generation", command, source_git_commit
-        ),
-        **fingerprint,
-        "source_generations": str(run.source_generations),
-        "source_generations_sha256": file_sha256(run.source_generations),
-        "backend_note": (
-            "Reused generation predates the vllm-lens backend. The campaign plan "
-            "asserts matching sampling protocol; the JSONL does not encode backend, "
-            "temperature, seed, thinking, or model revision."
-        ),
-        "validation": validation,
-    }
-    (attempt / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    _publish(attempt, final)
+    if not _validated_final(final, fingerprint):
+        raise ValueError(f"incomplete generation directory: {final}")
+    validation = validate_generations(final / "generations.jsonl", run, experiment)
+    _validate_recorded_outputs(final, validation)
     return final
 
 
@@ -757,13 +710,7 @@ def adopt_generation(
     source_manifest = source / "manifest.json"
     if not source_manifest.is_file():
         raise FileNotFoundError(f"source generation manifest not found: {source_manifest}")
-    allow_missing_target = not run.needs_generation
-    source_validation = validate_generations(
-        source_generations,
-        run,
-        experiment,
-        allow_missing_target=allow_missing_target,
-    )
+    source_validation = validate_generations(source_generations, run, experiment)
 
     run_root = output_root / "runs" / run.run_id
     final = run_root / "generation"
@@ -777,12 +724,7 @@ def adopt_generation(
         "source_generation_manifest_sha256": file_sha256(source_manifest),
     }
     if _validated_final(final, fingerprint):
-        validation = validate_generations(
-            final / "generations.jsonl",
-            run,
-            experiment,
-            allow_missing_target=allow_missing_target,
-        )
+        validation = validate_generations(final / "generations.jsonl", run, experiment)
         _validate_recorded_outputs(final, validation)
         print(f"Adopted generation already complete: {final}")
         return final
@@ -790,12 +732,7 @@ def adopt_generation(
     attempt = _attempt(run_root, "generation")
     destination = attempt / "generations.jsonl"
     shutil.copyfile(source_generations, destination)
-    validation = validate_generations(
-        destination,
-        run,
-        experiment,
-        allow_missing_target=allow_missing_target,
-    )
+    validation = validate_generations(destination, run, experiment)
     if validation != source_validation:
         raise ValueError(
             f"adopted generation changed during copy: {source_generations}"
@@ -836,12 +773,7 @@ def run_grading(
     judge_config_sha = validate_model_checkpoint(
         judge_model_path, expected_judge_model_type
     )
-    generation = materialize_generations(
-        experiment,
-        run,
-        output_root=output_root,
-        source_git_commit=source_git_commit,
-    )
+    generation = completed_generation(experiment, run, output_root=output_root)
     generation_path = generation / "generations.jsonl"
     generation_sha = file_sha256(generation_path)
     phase = "calibration" if calibration else "grading"
@@ -977,12 +909,7 @@ def run_full_node_grading(
     judge_config_sha = validate_model_checkpoint(
         judge_model_path, expected_judge_model_type
     )
-    generation = materialize_generations(
-        experiment,
-        run,
-        output_root=output_root,
-        source_git_commit=source_git_commit,
-    )
+    generation = completed_generation(experiment, run, output_root=output_root)
     generation_path = generation / "generations.jsonl"
     generation_sha = file_sha256(generation_path)
     run_root = output_root / "runs" / run.run_id

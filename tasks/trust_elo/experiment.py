@@ -14,7 +14,6 @@ from utils.steering_policy import training_span_for_target, validate_steering_ta
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 RUN_ID = re.compile(r"^\d{8}-\d{6}$")
-ACTIONS = {"generate_and_grade", "reuse_and_regrade"}
 
 
 def file_sha256(path: Path) -> str:
@@ -64,13 +63,6 @@ class RunSpec:
     data_dir: Path
     expected_rows: int
     steering_target: str
-    action: str
-    source_generations: Path | None
-    source_generations_sha256: str | None
-
-    @property
-    def needs_generation(self) -> bool:
-        return self.action == "generate_and_grade"
 
 
 @dataclass(frozen=True)
@@ -205,14 +197,6 @@ def load_experiment(path: Path, *, workspace: Path = REPO_ROOT) -> ExperimentCon
             raise ValueError(f"runs[{index}].run_id must be YYYYMMDD-HHMMSS")
         vector = _path(value.get("vector"), f"runs[{index}].vector", workspace)
         data_dir = _path(value.get("data_dir"), f"runs[{index}].data_dir", workspace)
-        source_raw = value.get("source_generations")
-        source = (
-            _path(source_raw, f"runs[{index}].source_generations", workspace)
-            if source_raw is not None
-            else None
-        )
-        source_sha = value.get("source_generations_sha256")
-        action = str(value.get("action", ""))
         target = validate_steering_target(str(value.get("steering_target", "")))
         run = RunSpec(
             number=int(value.get("number", index + 1)),
@@ -223,12 +207,7 @@ def load_experiment(path: Path, *, workspace: Path = REPO_ROOT) -> ExperimentCon
             data_dir=data_dir,
             expected_rows=int(value.get("expected_rows", 0)),
             steering_target=target,
-            action=action,
-            source_generations=source,
-            source_generations_sha256=(str(source_sha) if source_sha else None),
         )
-        if action not in ACTIONS:
-            raise ValueError(f"runs[{index}].action must be one of {sorted(ACTIONS)}")
         if not run.model_key or not run.model:
             raise ValueError(f"runs[{index}] requires model_key and model")
         if run.expected_rows < 1:
@@ -248,18 +227,6 @@ def load_experiment(path: Path, *, workspace: Path = REPO_ROOT) -> ExperimentCon
                 f"{run.run_id} vector is trained on {trained_span!r}, but "
                 f"{target!r} requires {required_span!r}"
             )
-        if run.needs_generation:
-            if source is not None or source_sha is not None:
-                raise ValueError(f"{run.run_id} generation source is only for reuse")
-        else:
-            if source is None or not source.is_file() or not source_sha:
-                raise ValueError(f"{run.run_id} requires an existing generation source")
-            actual_sha = file_sha256(source)
-            if actual_sha != source_sha:
-                raise ValueError(
-                    f"{run.run_id} generation SHA mismatch: "
-                    f"{actual_sha} != {source_sha}"
-                )
         runs.append(run)
 
     numbers = [run.number for run in runs]
