@@ -1,0 +1,26 @@
+{
+  "model": "Qwen/Qwen3.5-9B",
+  "n_test_pairs": 200,
+  "n_train_pairs": 1800,
+  "features": "layer output averaged over reply tokens, unsteered",
+  "seconds": 249,
+  "summary": {
+    "probe (train)": {
+      "best_layer": 17,
+      "best_paired_acc": 0.985
+    },
+    "random q97.5": {
+      "best_layer": 21,
+      "best_paired_acc": 0.7626
+    },
+    "trust BiPO assistant": {
+      "best_layer": 11,
+      "best_paired_acc": 0.87
+    },
+    "trust BiPO user": {
+      "best_layer": 17,
+      "best_paired_acc": 0.945
+    }
+  },
+  "note": "best_layer = layer with the highest AUROC in the original run (AUROC values removed)"
+}

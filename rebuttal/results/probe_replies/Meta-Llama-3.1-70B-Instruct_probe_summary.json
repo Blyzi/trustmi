@@ -1,0 +1,26 @@
+{
+  "model": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+  "n_test_pairs": 200,
+  "n_train_pairs": 1800,
+  "features": "layer output averaged over reply tokens, unsteered",
+  "seconds": 1026,
+  "summary": {
+    "probe (train)": {
+      "best_layer": 31,
+      "best_paired_acc": 0.99
+    },
+    "random q97.5": {
+      "best_layer": 33,
+      "best_paired_acc": 0.7303
+    },
+    "trust BiPO assistant": {
+      "best_layer": 18,
+      "best_paired_acc": 0.81
+    },
+    "trust BiPO user": {
+      "best_layer": 30,
+      "best_paired_acc": 0.885
+    }
+  },
+  "note": "best_layer = layer with the highest AUROC in the original run (AUROC values removed)"
+}

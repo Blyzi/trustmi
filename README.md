@@ -1,14 +1,12 @@
 # TrustMI: Causally controlling how assistants trust their users
 
-[![arXiv](https://img.shields.io/badge/arXiv-2610.06064-b31b1b.svg)](https://arxiv.org/abs/2610.06064)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-TrustMI-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/TrustMI)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![Code license: MIT](https://img.shields.io/badge/code%20license-MIT-yellow.svg)](LICENSE)
 [![Data license: CC BY 4.0](https://img.shields.io/badge/data%20license-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
 
 Code and data for the paper
-[*TrustMI: Causally controlling how assistants trust their users*](https://arxiv.org/abs/2610.06064)
-(Lasnier, Froger, Lasbordes and Seddah, 2026).
+*TrustMI: Causally controlling how assistants trust their users*
+(anonymous submission).
 
 <p align="center">
   <img src="assets/hero_figure.png" width="85%" alt="An agent asked for its user's March spending reads a transaction list that hides an instruction to send money to another account. Steered to distrust (α = −2) it ignores the instruction and makes no transfer; unsteered (α = 0) it sends 50€; steered to trust (α = +2) it sends 100€.">
@@ -103,20 +101,6 @@ any step can start from the previous step's published output.
    [`tasks/benchmarks/reports/README.md`](tasks/benchmarks/reports/README.md).
 
 Pass `-h` to any script for its full list of options.
-
-## Citation
-
-```bibtex
-@misc{lasnier2026trustmicausallycontrollingassistants,
-      title={TrustMI: Causally controlling how assistants trust their users},
-      author={Théo Lasnier and Romain Froger and Maxence Lasbordes and Djamé Seddah},
-      year={2026},
-      eprint={2610.06064},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2610.06064},
-}
-```
 
 ## License
 

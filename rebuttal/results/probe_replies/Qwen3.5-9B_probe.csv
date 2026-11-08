@@ -1,0 +1,128 @@
+direction,layer,paired_acc
+trust BiPO user,0,0.6
+trust BiPO assistant,0,0.425
+probe (train),0,0.87
+random q97.5,0,0.63
+trust BiPO user,1,0.52
+trust BiPO assistant,1,0.525
+probe (train),1,0.885
+random q97.5,1,0.6229
+trust BiPO user,2,0.615
+trust BiPO assistant,2,0.605
+probe (train),2,0.895
+random q97.5,2,0.6629
+trust BiPO user,3,0.57
+trust BiPO assistant,3,0.655
+probe (train),3,0.92
+random q97.5,3,0.6653
+trust BiPO user,4,0.45
+trust BiPO assistant,4,0.645
+probe (train),4,0.955
+random q97.5,4,0.6553
+trust BiPO user,5,0.395
+trust BiPO assistant,5,0.62
+probe (train),5,0.95
+random q97.5,5,0.6553
+trust BiPO user,6,0.585
+trust BiPO assistant,6,0.69
+probe (train),6,0.955
+random q97.5,6,0.6426
+trust BiPO user,7,0.65
+trust BiPO assistant,7,0.75
+probe (train),7,0.955
+random q97.5,7,0.6729
+trust BiPO user,8,0.615
+trust BiPO assistant,8,0.75
+probe (train),8,0.985
+random q97.5,8,0.6826
+trust BiPO user,9,0.555
+trust BiPO assistant,9,0.73
+probe (train),9,0.985
+random q97.5,9,0.69
+trust BiPO user,10,0.7
+trust BiPO assistant,10,0.735
+probe (train),10,0.975
+random q97.5,10,0.72
+trust BiPO user,11,0.78
+trust BiPO assistant,11,0.87
+probe (train),11,0.985
+random q97.5,11,0.7605
+trust BiPO user,12,0.705
+trust BiPO assistant,12,0.835
+probe (train),12,0.98
+random q97.5,12,0.6903
+trust BiPO user,13,0.835
+trust BiPO assistant,13,0.865
+probe (train),13,0.995
+random q97.5,13,0.73
+trust BiPO user,14,0.845
+trust BiPO assistant,14,0.8
+probe (train),14,0.995
+random q97.5,14,0.71
+trust BiPO user,15,0.935
+trust BiPO assistant,15,0.745
+probe (train),15,0.995
+random q97.5,15,0.7403
+trust BiPO user,16,0.905
+trust BiPO assistant,16,0.775
+probe (train),16,0.99
+random q97.5,16,0.7279
+trust BiPO user,17,0.945
+trust BiPO assistant,17,0.725
+probe (train),17,0.985
+random q97.5,17,0.725
+trust BiPO user,18,0.87
+trust BiPO assistant,18,0.78
+probe (train),18,0.995
+random q97.5,18,0.765
+trust BiPO user,19,0.685
+trust BiPO assistant,19,0.76
+probe (train),19,0.99
+random q97.5,19,0.7226
+trust BiPO user,20,0.62
+trust BiPO assistant,20,0.81
+probe (train),20,0.985
+random q97.5,20,0.6926
+trust BiPO user,21,0.63
+trust BiPO assistant,21,0.75
+probe (train),21,0.985
+random q97.5,21,0.7626
+trust BiPO user,22,0.62
+trust BiPO assistant,22,0.66
+probe (train),22,0.99
+random q97.5,22,0.7676
+trust BiPO user,23,0.44
+trust BiPO assistant,23,0.685
+probe (train),23,0.99
+random q97.5,23,0.7076
+trust BiPO user,24,0.355
+trust BiPO assistant,24,0.64
+probe (train),24,0.995
+random q97.5,24,0.725
+trust BiPO user,25,0.37
+trust BiPO assistant,25,0.66
+probe (train),25,0.995
+random q97.5,25,0.7752
+trust BiPO user,26,0.41
+trust BiPO assistant,26,0.635
+probe (train),26,0.995
+random q97.5,26,0.7126
+trust BiPO user,27,0.31
+trust BiPO assistant,27,0.645
+probe (train),27,0.995
+random q97.5,27,0.7229
+trust BiPO user,28,0.325
+trust BiPO assistant,28,0.68
+probe (train),28,0.99
+random q97.5,28,0.7179
+trust BiPO user,29,0.425
+trust BiPO assistant,29,0.71
+probe (train),29,0.995
+random q97.5,29,0.6803
+trust BiPO user,30,0.615
+trust BiPO assistant,30,0.76
+probe (train),30,0.995
+random q97.5,30,0.7205
+trust BiPO assistant,31,0.79
+probe (train),31,0.99
+random q97.5,31,0.7681
